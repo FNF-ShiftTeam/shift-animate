@@ -1,10 +1,10 @@
 {
-    "name": "flxanimate",
-    "url": "https://github.com/Dot-Stuff/flxanimate/",
+    "name": "shift-animate",
+    "url": "https://github.com/FNF-ShiftTeam/shift-animate",
     "license": "MIT",
     "tags": ["adobe","flash","animate","texture_sheet", "flixel"],
     "description": "Adobe Animate's texture atlas player for HaxeFlixel.",
-    "version": "4.0.0",
+    "version": "1.0",
     "releasenote": "Revamp several issues, and introducing filters on MovieClips/layers.",
     "contributors": ["DotWith", "MrCheemsAndFriends"],
     "dependencies": {}

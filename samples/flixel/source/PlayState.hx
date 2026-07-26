@@ -10,7 +10,7 @@ import flixel.group.FlxSpriteGroup;
 import flixel.util.FlxColor;
 import flixel.FlxCamera;
 import flixel.text.FlxText;
-import flxanimate.FlxAnimate;
+import shiftanimate.FlxAnimate;
 import flixel.FlxState;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.FlxG;
@@ -18,10 +18,12 @@ import flixel.FlxG;
 class PlayState extends FlxState
 {
 	// variables you can change to see how it can vary the sample.
+
 	/**
 	 * a `Bool` check to see how it differs from optimised to unoptimised.**WARNING:** if the texture atlas doesn't provide a optimised/unoptimised counterpart, it may crash! 
 	 */
 	var optimised:Bool = true;
+
 	/**
 	 * Checks if the memory used should be only used for the texture atlas only.
 	 */
@@ -31,24 +33,26 @@ class PlayState extends FlxState
 	 * Checks whether to use the ninja-girl using the old exporter AND the new exporter.
 	 */
 	var betterTA:Bool = true;
-	
+
 	// Controls.
-	
+
 	/**
 	 * Crouch controls.
 	 */
 	var crouch:Array<FlxKey> = [SHIFT, C];
+
 	/**
 	 * Attack controls.
 	 */
 	var attack:Array<FlxKey> = [SPACE, ENTER];
+
 	/**
 	 * Walk controls.
 	 */
-	var walk:Array<Array<FlxKey>> = [[LEFT, A], [RIGHT, D], [UP, W],  [DOWN, S]];
+	var walk:Array<Array<FlxKey>> = [[LEFT, A], [RIGHT, D], [UP, W], [DOWN, S]];
 
 	var velocity = 150;
-	
+
 	// variables that it is not recommended to change, work with precaution.
 	var textCamera:FlxCamera;
 	var char:FlxAnimate;
@@ -109,8 +113,8 @@ class PlayState extends FlxState
 		// if (FlxG.keys.justPressed.R)
 		// 	sprite.loadGraphic(char._sprite.__cacheBitmap.bitmapData);
 
-		var keyJustPressed:FlxKey = FlxG.keys.firstJustPressed();		
-		
+		var keyJustPressed:FlxKey = FlxG.keys.firstJustPressed();
+
 		if (crouch.indexOf(keyJustPressed) != -1 || attack.indexOf(keyJustPressed) != -1)
 		{
 			specialAnim = true;
@@ -118,10 +122,11 @@ class PlayState extends FlxState
 			setAnimationLabel((crouch.indexOf(keyJustPressed) != -1) ? 2 : 3, true, () -> specialAnim = false);
 		}
 
-		if (specialAnim) return;
+		if (specialAnim)
+			return;
 
 		var keyPressed:FlxKey = FlxG.keys.firstPressed();
-		
+
 		if (keyPressed != NONE)
 		{
 			for (arr in walk)
@@ -132,7 +137,7 @@ class PlayState extends FlxState
 					break;
 				}
 			}
-			
+
 			var i = walk.indexOf(keys);
 
 			if ([0, 1].indexOf(i) != -1)
@@ -150,19 +155,19 @@ class PlayState extends FlxState
 			setAnimationLabel(0);
 	}
 
-	function setAnimationLabel(label:Int, reset:Bool = false, onComplete:()->Void = null)
+	function setAnimationLabel(label:Int, reset:Bool = false, onComplete:() -> Void = null)
 	{
 		var txt = grpLabels.members[1];
 		if (txt.text == labels[label] && !reset)
 			return;
-		
+
 		if (txt.text != "")
 		{
 			char.anim.removeAllCallbacksFrom(txt.text);
 			char.anim.removeAllCallbacksFrom(labels[(labels.indexOf(txt.text) + 1) % labels.length]);
 		}
 
-		char.anim.getFrameLabel(labels[(label + 1) % labels.length]).add(()-> 
+		char.anim.getFrameLabel(labels[(label + 1) % labels.length]).add(() ->
 		{
 			if (onComplete != null)
 				onComplete();

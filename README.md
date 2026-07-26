@@ -41,7 +41,7 @@ you can download it by typing `haxelib install flxanimate` on your terminal or c
 
 ## 2. Git
 
-Git is an open-sourced version control system designed to handle every type of project in Github, in this case, FlxAnimate. You should check first of all if you have [Git](https://git-scm.com) 
+Git is an open-sourced version control system designed to handle every type of project in Github, in this case, shiftanimate. You should check first of all if you have [Git](https://git-scm.com) 
 installed before typing `haxelib git flxanimate https://github.com/Dot-Stuff/flxanimate` on your terminal or command prompt.
 
 # How to use it?
