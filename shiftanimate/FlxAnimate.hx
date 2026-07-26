@@ -22,11 +22,9 @@ import shiftanimate.animate.*;
 import shiftanimate.zip.Zip;
 import openfl.Assets;
 import haxe.io.BytesInput;
-#if (flixel >= "5.3.0")
+
 import flixel.sound.FlxSound;
-#else
-import flixel.system.FlxSound;
-#end
+
 import flixel.FlxG;
 import shiftanimate.data.AnimationData;
 import flixel.FlxSprite;
